@@ -1,0 +1,47 @@
+@startuml
+
+entity Recruitment {
+  + id (PK)
+  --
+  # company_id (FK:Company)
+  position
+  reward
+  details
+  skills
+  create_date
+  withdrawal_date
+}
+
+entity Company  {
+  + id (PK)
+  --
+  name
+  country
+  region
+  create_date
+  withdrawal_date
+}
+
+Company -left-|{ Recruitment
+
+entity Apply {
+  + id (PK)
+  --
+  # recruitment_id (FK:Recruitment)
+  # user_id (FK: User)
+   create_date
+   withdrawal_date
+}
+
+entity User {
+  + id (PK)
+  --
+  name
+  create_date
+  withdrawal_date
+}
+
+User -left-|{ Apply
+Recruitment -left-|{ Apply
+
+@enduml
